@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safer Internet Day 2026 | Cyber Shield</title>
+    <meta name="description" content="Safer Internet Day 2026 - Learn how to stay safe in the digital world.">
+    <meta name="keywords" content="cybersecurity, safer internet day, password safety, online privacy">
+    
+    <meta property="og:title" content="Cyber Shield 2026 | Stay Safe Online">
+    <meta property="og:description" content="Test your security knowledge and learn how to protect your digital footprint.">
+    <meta property="og:image" content="https://charastestplace.github.io/SafeInternetDay/preview.jpg"> <meta property="og:url" content="https://charastestplace.github.io/SafeInternetDay/">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         :root {
@@ -16,6 +23,21 @@
         }
 
         * { box-sizing: border-box; transition: all 0.3s ease; }
+        
+        /* Scrollbar İyileştirmesi */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050b12; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--accent), var(--primary));
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary); 
+        }
 
         body {
             margin: 0;
@@ -38,32 +60,11 @@
             border-bottom: 1px solid rgba(0, 195, 255, 0.2);
         }
 
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--primary); font-size: 1.2rem; }
 
-        .lang-switch {
-            display: flex;
-            gap: 8px;
-        }
-
-        .lang-switch a {
-            text-decoration: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .lang-switch a.active {
-            background: var(--primary);
-            color: black;
-        }
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-switch a { text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 0.8rem; color: white; border: 1px solid rgba(255,255,255,0.3); }
+        .lang-switch a.active { background: var(--primary); color: black; }
 
         header {
             min-height: 80vh;
@@ -98,11 +99,7 @@
             box-shadow: 0 5px 15px rgba(0, 195, 255, 0.4);
         }
 
-        section {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: auto;
-        }
+        section { padding: 80px 5%; max-width: 1200px; margin: auto; }
 
         .tips-grid {
             display: grid;
@@ -118,105 +115,302 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .tip-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            background: rgba(255,255,255,0.12);
-        }
+        .tip-card:hover { transform: translateY(-10px); border-color: var(--primary); background: rgba(255,255,255,0.12); }
+        .tip-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; display: block; }
 
-        .tip-card i {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: block;
-        }
+        /* Quiz Styles */
+        #quiz-container { display: none; background: rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; margin-top: 20px; border: 1px solid var(--primary); }
+        .option-btn { width: 100%; text-align: left; padding: 15px; margin: 5px 0; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 10px; cursor: pointer; }
+        .option-btn:hover { background: var(--primary); color: black; border-color: var(--primary); }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            opacity: 0.6;
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
+        footer { text-align: center; padding: 40px; opacity: 0.6; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
+<div id="loader" style="position: fixed; width: 100%; height: 100vh; background: #050b12; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.8s ease;">
+    
+    <div style="position: absolute; width: 300px; height: 300px; border: 1px solid rgba(0, 195, 255, 0.1); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 195, 255, 0.05); animation: pulse 2s infinite;"></div>
 
+    <div style="position: relative; text-align: center; width: 300px;">
+        <i class="fas fa-shield-virus" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--primary));"></i>
+        
+        <p id="loader-text" style="font-family: 'monospace'; color: var(--primary); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 10px; height: 20px;">INITALIZING SYSTEM...</p>
+        
+        <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+            <div id="loader-bar" style="width: 0%; height: 100%; background: var(--primary); box-shadow: 0 0 15px var(--primary); transition: width 0.3s ease;"></div>
+        </div>
+        
+        <p id="loader-perc" style="margin-top: 10px; font-family: 'monospace'; opacity: 0.6; font-size: 0.8rem;">0%</p>
+    </div>
+</div>
+
+<style>
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.2); opacity: 0.1; }
+        100% { transform: scale(1); opacity: 0.3; }
+    }
+</style>
+<style>
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+<canvas id="matrix-bg" style="position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15;"></canvas>
+
+<script>
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "0101010101010101"; // Sadece 0 ve 1 aksın
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00C3FF"; // Senin temanın mavi rengi
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(drawMatrix, 50);
+
+    // Pencere boyutu değişirse ayarla
+        window.addEventListener('load', () => {
+        const loaderText = document.getElementById('loader-text');
+        const loaderBar = document.getElementById('loader-bar');
+        const loaderPerc = document.getElementById('loader-perc');
+    
+        const messages = [
+            "ENCRYPTING CONNECTION...",
+            "SCANNING SYSTEM...",
+            "SCANNING DATABASE...",
+            "ACTIVATING FIREWALL...",
+            "ACCESS GRANTED!"
+        ];
+    
+        let progress = 0;
+        let msgIdx = 0;
+
+        const interval = setInterval(() => {
+            progress += Math.floor(Math.random() * 15) + 5; // Rastgele artış
+            if (progress > 100) progress = 100;
+        
+        // Barı ve Yüzdeyi Güncelle
+            loaderBar.style.width = progress + "%";
+            loaderPerc.innerText = progress + "%";
+        
+        // Mesajı Değiştir
+            if (progress > (msgIdx + 1) * 20 && msgIdx < messages.length - 1) {
+                msgIdx++;
+                loaderText.innerText = messages[msgIdx];
+            }
+
+            if (progress >= 100) {
+                clearInterval(interval);
+                loaderText.style.color = "#2ed573"; // Yeşil renk (Onay)
+             
+                setTimeout(() => {
+                    const loader = document.getElementById('loader');
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.display = 'none'; }, 800);
+                }, 500);
+            }
+        }, 200);
+    });
+</script>
 <nav>
     <div class="logo"><i class="fas fa-user-shield"></i> PROTECT YOUR SECURITY</div>
-
     <div class="lang-switch">
         <a href="index.html">TR</a>
         <a href="indexEN.html" class="active">EN</a>
     </div>
 </nav>
 
-<header>
+<header data-aos="zoom-out">
     <h1>STAY SAFE<br>IN THE DIGITAL WORLD</h1>
-    <p style="max-width:600px; opacity:0.8;">
-        This website was created as part of the <b>Safer Internet Day Project</b>.
-        Learn how to protect yourself online.
-    </p>
-    <button class="main-btn" onclick="document.getElementById('tips').scrollIntoView({behavior:'smooth'})">
-        Start Learning
-    </button>
+    <p style="max-width:600px; opacity:0.8;">This website was created for <b>Safer Internet Day</b>. Learn how to protect yourself online.</p>
+    <button class="main-btn" onclick="document.getElementById('tips').scrollIntoView({behavior:'smooth'})">Start Learning</button>
 </header>
 
 <section id="tips">
-    <h2 style="text-align:center; font-family: 'Montserrat'; font-size: 2rem;">
-        🛡️ Essential Safety Tips
-    </h2>
-
+    <h2 style="text-align:center; font-family: 'Montserrat'; font-size: 2rem;" data-aos="fade-up">🛡️ Essential Safety Tips</h2>
     <div class="tips-grid">
-        <div class="tip-card">
+        <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
             <i class="fas fa-lock"></i>
             <h3>Password Manager</h3>
-            <p>Never reuse the same password. Use a password manager to create strong and unique passwords.</p>
+            <p>Never reuse passwords. Use a manager to create strong and unique keys for every site.</p>
         </div>
-
-        <div class="tip-card">
+        <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
             <i class="fas fa-envelope-open-text"></i>
             <h3>Phishing Attacks</h3>
-            <p>Be careful with urgent emails like “You won a prize” or “Your account is suspended.” Always check the sender.</p>
+            <p>Be careful with "You won a prize" emails. Always check the sender's real address.</p>
         </div>
-
-        <div class="tip-card">
+        <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
             <i class="fas fa-mobile-alt"></i>
-            <h3>Keep Devices Updated</h3>
-            <p>System updates include important security fixes. Never ignore them.</p>
+            <h3>Keep Updated</h3>
+            <p>Updates contain critical security patches. Don't ignore those notifications.</p>
         </div>
-
-        <div class="tip-card">
+        <div class="tip-card" data-aos="fade-up" data-aos-delay="400">
             <i class="fas fa-eye-slash"></i>
             <h3>Privacy Settings</h3>
-            <p>Set your social media accounts to private to protect your personal information.</p>
+            <p>Set your accounts to private. Don't let strangers track your personal life.</p>
         </div>
-
-        <div class="tip-card">
+        <div class="tip-card" data-aos="fade-up" data-aos-delay="500">
             <i class="fas fa-wifi"></i>
             <h3>Public Wi-Fi</h3>
-            <p>Avoid sensitive actions on public Wi-Fi. If needed, use a secure VPN.</p>
+            <p>Avoid banking on public networks. Use a secure VPN if you absolutely must connect.</p>
         </div>
-
-        <div class="tip-card">
+        <div class="tip-card" data-aos="fade-up" data-aos-delay="600">
             <i class="fas fa-comment-slash"></i>
             <h3>Cyberbullying</h3>
-            <p>Block and report harmful behavior. You are not alone online.</p>
+            <p>Block and report toxic behavior. Remember, you have the right to be safe online.</p>
         </div>
     </div>
 </section>
+<section id="password-checker" data-aos="fade-up">
+    <div style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 195, 255, 0.3);">
+        <h2 style="font-family: 'Montserrat'; color: var(--primary);">🔐 Password Strength Meter</h2>
+        <p>Test how secure your password is. (Your data is never saved)</p>
+        
+        <input type="password" id="pass-input" placeholder="Type your password..." 
+               style="width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #444; background: #111; color: white; font-size: 1.1rem; margin-bottom: 10px;">
+        
+        <div style="width: 100%; height: 10px; background: #333; border-radius: 5px; overflow: hidden; margin-bottom: 10px;">
+            <div id="strength-bar" style="width: 0%; height: 100%; background: #ff4757; transition: 0.5s;"></div>
+        </div>
+        
+        <p id="strength-text" style="font-weight: bold; margin-bottom: 20px;">Strength: Very Weak</p>
 
-<section style="background: rgba(112, 0, 255, 0.1); border-radius: 30px; text-align: center;">
-    <h2>💡 Remember!</h2>
-    <p>
-        An app or service that's "free" might actually be using your data.
-        Always check the permissions and user reviews before downloading anything.
-    </p>
+        <div style="text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.9rem; opacity: 0.8;">
+            <div id="crit-length">❌ Min 8 Characters</div>
+            <div id="crit-upper">❌ Uppercase Letter</div>
+            <div id="crit-number">❌ Numbers</div>
+            <div id="crit-special">❌ Symbols (!@#...)</div>
+        </div>
+    </div>
+</section>
+<section style="text-align: center;" data-aos="fade-up">
+    <button class="main-btn" id="start-btn" onclick="startQuiz()">🚀 Start the Safety Quiz</button>
+    
+    <div id="quiz-container">
+        <div id="quiz-content">
+            <h3 id="question-text">Question goes here</h3>
+            <div id="options-container"></div>
+            <p style="margin-top:20px; font-size:0.8rem; opacity:0.5;">Progress: <span id="current-idx">1</span>/10</p>
+        </div>
+        <div id="result-area" style="display:none;">
+            <h2 id="score-text"></h2>
+            <p id="feedback-text"></p>
+            <button class="main-btn" onclick="location.reload()">Retry Quiz</button>
+        </div>
+    </div>
 </section>
 
 <footer>
     <p>© 2026 Safer Internet Day Project | Digital Awareness Saves Lives</p>
 </footer>
 
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+    // Şifre Ölçer Mantığı - Bunu mevcut <script> içine yapıştır
+    const passInput = document.getElementById('pass-input');
+    const strengthBar = document.getElementById('strength-bar');
+    const strengthText = document.getElementById('strength-text');
+
+    if(passInput) { // Hata almamak için kontrol
+        passInput.addEventListener('input', () => {
+            const val = passInput.value;
+            let score = 0;
+
+            const criteria = {
+                length: val.length >= 8,
+                upper: /[A-Z]/.test(val),
+                number: /[0-9]/.test(val),
+                special: /[^A-Za-z0-9]/.test(val)
+            };
+
+        // UI Güncelleme
+            document.getElementById('crit-length').innerText = criteria.length ? "✅ At least 8 characters" : "❌ At least 8 characters";
+            document.getElementById('crit-upper').innerText = criteria.upper ? "✅ Uppercase Letter" : "❌ Uppercase Letter";
+            document.getElementById('crit-number').innerText = criteria.number ? "✅ Numbers" : "❌ Numbers";
+            document.getElementById('crit-special').innerText = criteria.special ? "✅ Symbols (!@#...)" : "❌ Symbols (!@#...)";
+
+            if(criteria.length) score += 25;
+            if(criteria.upper) score += 25;
+            if(criteria.number) score += 25;
+            if(criteria.special) score += 25;
+
+            strengthBar.style.width = score + "%";
+            if (score <= 25) { strengthBar.style.background = "#ff4757"; strengthText.innerText = "Strength: Very Weak 💀"; strengthText.style.color = "#ff4757"; }
+            else if (score <= 50) { strengthBar.style.background = "#ffa502"; strengthText.innerText = "Strength: Weak ⚠️"; strengthText.style.color = "#ffa502"; }
+            else if (score <= 75) { strengthBar.style.background = "#2ed573"; strengthText.innerText = "Strength: Good 👍"; strengthText.style.color = "#2ed573"; }
+            else { strengthBar.style.background = "#00C3FF"; strengthText.innerText = "Strength: Perfect! 🛡️"; strengthText.style.color = "#00C3FF"; }
+        });
+    }
+
+    const quizData = [
+        { q: "What is the recommended minimum password length?", a: ["6 characters", "8 characters", "12 characters"], c: 2 },
+        { q: "What does 2FA stand for?", a: ["Two-Factor Authentication", "Second File Access", "Triple Fast Action"], c: 0 },
+        { q: "Suspicious emails trying to steal your data are called...", a: ["Fishing", "Phishing", "Hacking"], c: 1 },
+        { q: "Is it safe to do online banking on public Wi-Fi?", a: ["Yes, always", "Only if it's fast", "No, it's risky"], c: 2 },
+        { q: "Why are software updates important?", a: ["For new colors", "To fix security holes", "To make the PC slow"], c: 1 },
+        { q: "Does your digital footprint last forever?", a: ["Yes", "No, it expires", "Only for 5 years"], c: 0 },
+        { q: "What should you do with unknown links?", a: ["Click to see", "Ignore/Verify first", "Forward to friends"], c: 1 },
+        { q: "Sharing your live location publicly is...", a: ["Very safe", "Risky", "Cool"], c: 1 },
+        { q: "The first thing to do when cyberbullied is...", a: ["Fight back", "Report and block", "Delete internet"], c: 1 },
+        { q: "A VPN helps you by...", a: ["Giving free games", "Encrypting your data", "Charging your phone"], c: 1 }
+    ];
+
+    let currentQ = 0; let score = 0;
+
+    function startQuiz() {
+        document.getElementById('start-btn').style.display = 'none';
+        document.getElementById('quiz-container').style.display = 'block';
+        showQ();
+    }
+
+    function showQ() {
+        const q = quizData[currentQ];
+        document.getElementById('question-text').innerText = q.q;
+        document.getElementById('current-idx').innerText = currentQ + 1;
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        q.a.forEach((opt, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => { if(i === q.c) score++; nextQ(); };
+            container.appendChild(btn);
+        });
+    }
+
+    function nextQ() {
+        currentQ++;
+        if(currentQ < quizData.length) showQ();
+        else showResult();
+    }
+
+    function showResult() {
+        document.getElementById('quiz-content').style.display = 'none';
+        const res = document.getElementById('result-area');
+        res.style.display = 'block';
+        document.getElementById('score-text').innerText = `Score: ${score} / 10`;
+        document.getElementById('feedback-text').innerText = score > 7 ? "You are a Cyber Hero! 🛡️" : "Read the tips and try again! 📚";
+    }
+</script>
 </body>
 </html>
